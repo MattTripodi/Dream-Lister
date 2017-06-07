@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EE26DBF91EE745F70076EB04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26DBF81EE745F70076EB04 /* AppDelegate.swift */; };
-		EE26DBFB1EE745F70076EB04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26DBFA1EE745F70076EB04 /* ViewController.swift */; };
+		EE26DBFB1EE745F70076EB04 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26DBFA1EE745F70076EB04 /* MainVC.swift */; };
 		EE26DBFE1EE745F70076EB04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE26DBFC1EE745F70076EB04 /* Main.storyboard */; };
 		EE26DC011EE745F70076EB04 /* DreamLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE26DBFF1EE745F70076EB04 /* DreamLister.xcdatamodeld */; };
 		EE26DC031EE745F70076EB04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE26DC021EE745F70076EB04 /* Assets.xcassets */; };
@@ -22,12 +22,13 @@
 		EE4E70891EE74C1D00B48CA0 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E70811EE74C1D00B48CA0 /* Store+CoreDataProperties.swift */; };
 		EE4E708A1EE74C1D00B48CA0 /* ItemType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E70821EE74C1D00B48CA0 /* ItemType+CoreDataClass.swift */; };
 		EE4E708B1EE74C1D00B48CA0 /* ItemType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E70831EE74C1D00B48CA0 /* ItemType+CoreDataProperties.swift */; };
+		EE4E708E1EE7789D00B48CA0 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EE26DBF51EE745F70076EB04 /* DreamLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE26DBF81EE745F70076EB04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE26DBFA1EE745F70076EB04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE26DBFA1EE745F70076EB04 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		EE26DBFD1EE745F70076EB04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE26DC001EE745F70076EB04 /* DreamLister.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamLister.xcdatamodel; sourceTree = "<group>"; };
 		EE26DC021EE745F70076EB04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		EE4E70811EE74C1D00B48CA0 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EE4E70821EE74C1D00B48CA0 /* ItemType+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EE4E70831EE74C1D00B48CA0 /* ItemType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +76,10 @@
 		EE26DBF71EE745F70076EB04 /* DreamLister */ = {
 			isa = PBXGroup;
 			children = (
+				EE4E708C1EE7788000B48CA0 /* View */,
 				EE26DC1F1EE74AD60076EB04 /* Model */,
 				EE26DBF81EE745F70076EB04 /* AppDelegate.swift */,
-				EE26DBFA1EE745F70076EB04 /* ViewController.swift */,
+				EE26DBFA1EE745F70076EB04 /* MainVC.swift */,
 				EE26DBFC1EE745F70076EB04 /* Main.storyboard */,
 				EE26DC021EE745F70076EB04 /* Assets.xcassets */,
 				EE26DC041EE745F70076EB04 /* LaunchScreen.storyboard */,
@@ -108,6 +111,14 @@
 				EE4E70811EE74C1D00B48CA0 /* Store+CoreDataProperties.swift */,
 			);
 			name = Generated;
+			sourceTree = "<group>";
+		};
+		EE4E708C1EE7788000B48CA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,11 +197,12 @@
 				EE4E708A1EE74C1D00B48CA0 /* ItemType+CoreDataClass.swift in Sources */,
 				EE4E70851EE74C1D00B48CA0 /* Item+CoreDataProperties.swift in Sources */,
 				EE4E70841EE74C1D00B48CA0 /* Item+CoreDataClass.swift in Sources */,
+				EE4E708E1EE7789D00B48CA0 /* MaterialView.swift in Sources */,
 				EE4E70861EE74C1D00B48CA0 /* Image+CoreDataClass.swift in Sources */,
 				EE26DC0E1EE7460B0076EB04 /* CustomTextField.swift in Sources */,
 				EE4E70881EE74C1D00B48CA0 /* Store+CoreDataClass.swift in Sources */,
 				EE4E70891EE74C1D00B48CA0 /* Store+CoreDataProperties.swift in Sources */,
-				EE26DBFB1EE745F70076EB04 /* ViewController.swift in Sources */,
+				EE26DBFB1EE745F70076EB04 /* MainVC.swift in Sources */,
 				EE4E708B1EE74C1D00B48CA0 /* ItemType+CoreDataProperties.swift in Sources */,
 				EE26DBF91EE745F70076EB04 /* AppDelegate.swift in Sources */,
 				EE26DC011EE745F70076EB04 /* DreamLister.xcdatamodeld in Sources */,
