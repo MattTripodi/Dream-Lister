@@ -10,20 +10,27 @@ import UIKit
 import CoreData
 
 
-class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
 	@IBOutlet weak var storePicker: UIPickerView!
 	@IBOutlet weak var titleField: CustomTextField!
 	@IBOutlet weak var PriceField: CustomTextField!
 	@IBOutlet weak var detailsField: CustomTextField!
 	@IBOutlet weak var thumbImg: UIImageView!
+	@IBOutlet weak var selectStoreAndItemTypeLbl: UILabel!
+	@IBOutlet weak var saveItemBtn: UIButton!
 	
 	var stores = [Store]()
+	var itemTypes = [ItemType]()
 	var itemToEdit: Item?
 	var imagePicker: UIImagePickerController!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		saveItemBtn.layer.cornerRadius = 5 // To give the save button rounded corners 
+		
+		self.hideKeyboard()
 		
 		if let topItem = self.navigationController?.navigationBar.topItem {
 			
@@ -32,25 +39,12 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		
 		storePicker.delegate = self
 		storePicker.dataSource = self
-		
+	
 		imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
 		
-//		let store = Store(context: context)
-//		store.name = "Best Buy"
-//		let store2 = Store(context: context)
-//		store2.name = "Tesla Dealership"
-//		let store3 = Store(context: context)
-//		store3.name = "Frys Electronics"
-//		let store4 = Store(context: context)
-//		store4.name = "Target"
-//		let store5 = Store(context: context)
-//		store5.name = "Amazon"
-//		let store6 = Store(context: context)
-//		store6.name = "K Mart"
-//		
-//		ad.saveContext()
 		getStores()
+		getItemTypes()
 		
 		if itemToEdit != nil {
 			loadItemData()
@@ -60,18 +54,31 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		
-		let store = stores[row]
-		return store.name
+		if component == 0 {
+			let store = stores[row]
+			return store.name
+		} else if component == 1 {
+			let itemType = itemTypes[row]
+			return itemType.type
+		} else {
+			return "" //error
+		}
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 		
-		return stores.count
+		if component == 0 {
+			return stores.count
+		} else if component == 1 {
+			return itemTypes.count
+		} else {
+			return -1 //throw error
+		}
 	}
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		
-		return 1
+		return 2
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -88,6 +95,19 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 			self.stores = try context.fetch(fetchRequest)
 			self.storePicker.reloadAllComponents()
 			
+		} catch {
+			
+			// handle the error
+		}
+	}
+	
+	func getItemTypes() {
+		
+		let fetchRequest: NSFetchRequest<ItemType> = ItemType.fetchRequest()
+		do {
+			
+			self.itemTypes = try context.fetch(fetchRequest)
+			self.storePicker.reloadAllComponents()
 		} catch {
 			
 			// handle the error
@@ -128,6 +148,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		}
 		
 		item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+//		item.toItemType = itemTypes[storePicker.selectedRow(inComponent: 1)]
 		
 		ad.saveContext()
 		
@@ -143,20 +164,15 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 			detailsField.text = item.details
 			thumbImg.image = item.toImage?.image as? UIImage
 			
-			if let store = item.toStore {
-				
+			if let itemType = item.toItemType {
 				var index = 0
 				repeat {
-					
-					let s = stores[index]
-					if s.name == store.name {
-						
+					let iT = itemTypes[index]
+					if iT.type == itemType.type {
 						storePicker.selectRow(index, inComponent: 0, animated: false)
-						break
 					}
 					index += 1
-					
-				} while (index < stores.count)
+				} while (index < itemTypes.count)
 			}
 		}
 	}
@@ -187,9 +203,25 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		imagePicker.dismiss(animated: true, completion: nil)
 	}
 	
-	
-
 }
+
+extension UIViewController
+{
+	func hideKeyboard()
+	{
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+			target: self,
+			action: #selector(UIViewController.dismissKeyboard))
+		
+		view.addGestureRecognizer(tap)
+	}
+	
+	func dismissKeyboard()
+	{
+		view.endEditing(true)
+	}
+}
+
 
 
 

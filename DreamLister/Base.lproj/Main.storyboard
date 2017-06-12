@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pAV-tx-j7P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pAV-tx-j7P">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,6 +31,7 @@
                                     <segment title="Newest"/>
                                     <segment title="Price"/>
                                     <segment title="Title"/>
+                                    <segment title="Type"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -121,7 +122,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Eru-Cz-oa1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1pt-XW-cUZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VZn-MG-y9X" secondAttribute="bottom" id="9uN-g6-DjI"/>
@@ -148,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1017" y="-559"/>
+            <point key="canvasLocation" x="842" y="-559"/>
         </scene>
         <!--Add/Edit-->
         <scene sceneID="Yb0-RC-CVh">
@@ -170,10 +171,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-k2-ZQq">
-                                <rect key="frame" x="51" y="106.5" width="30" height="30"/>
+                                <rect key="frame" x="16" y="82" width="100" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="l6V-EW-HNu"/>
-                                    <constraint firstAttribute="width" constant="30" id="r0L-Kc-362"/>
+                                    <constraint firstAttribute="height" constant="81" id="l6V-EW-HNu"/>
+                                    <constraint firstAttribute="width" constant="100" id="r0L-Kc-362"/>
                                 </constraints>
                                 <connections>
                                     <action selector="addImage:" destination="gUc-bS-Z8E" eventType="touchUpInside" id="K59-rd-afd"/>
@@ -188,6 +189,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9rd-85-Nd6" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="124" y="132" width="235" height="40"/>
@@ -197,7 +201,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-8g-cu0" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="16" y="182" width="343" height="60"/>
@@ -208,6 +215,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCk-iE-64d">
                                 <rect key="frame" x="0.0" y="383" width="375" height="216"/>
@@ -229,11 +239,11 @@
                                     <action selector="savePressed:" destination="gUc-bS-Z8E" eventType="touchUpInside" id="rvt-e0-KU2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-WD-ahg">
-                                <rect key="frame" x="140.5" y="354" width="94" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Store and Item Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-WD-ahg">
+                                <rect key="frame" x="62.5" y="354" width="250" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="NLp-fr-n7O"/>
-                                    <constraint firstAttribute="width" constant="94" id="aDl-fN-3Ul"/>
+                                    <constraint firstAttribute="width" constant="250" id="aDl-fN-3Ul"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,6 +286,8 @@
                     <connections>
                         <outlet property="PriceField" destination="9rd-85-Nd6" id="wKm-e6-D4n"/>
                         <outlet property="detailsField" destination="ZxC-8g-cu0" id="0Yx-h0-z4q"/>
+                        <outlet property="saveItemBtn" destination="MMv-uy-Gor" id="1uE-8l-ZfT"/>
+                        <outlet property="selectStoreAndItemTypeLbl" destination="Zzh-WD-ahg" id="oVJ-be-VlB"/>
                         <outlet property="storePicker" destination="sCk-iE-64d" id="ngM-kH-1Ac"/>
                         <outlet property="thumbImg" destination="ZWV-K0-KwY" id="ONQ-rb-gW2"/>
                         <outlet property="titleField" destination="Caz-JK-dEZ" id="Lmu-hW-WXo"/>
@@ -283,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SR8-Fj-dug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="-559.07046476761627"/>
+            <point key="canvasLocation" x="1575" y="-559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EMo-uV-Yec">

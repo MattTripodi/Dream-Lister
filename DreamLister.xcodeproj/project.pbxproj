@@ -80,8 +80,8 @@
 		EE26DBF71EE745F70076EB04 /* DreamLister */ = {
 			isa = PBXGroup;
 			children = (
-				EE4E708C1EE7788000B48CA0 /* View */,
 				EE26DC1F1EE74AD60076EB04 /* Model */,
+				EE4E708C1EE7788000B48CA0 /* View */,
 				EE86ADD51EE9F0EC006B993C /* Controller */,
 				EE26DBF81EE745F70076EB04 /* AppDelegate.swift */,
 				EE26DBFC1EE745F70076EB04 /* Main.storyboard */,
