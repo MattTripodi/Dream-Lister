@@ -25,6 +25,7 @@
 		EE4E708E1EE7789D00B48CA0 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */; };
 		EE4E70901EE77C9000B48CA0 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E708F1EE77C9000B48CA0 /* ItemCell.swift */; };
 		EE86ADD71EE9F115006B993C /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86ADD61EE9F115006B993C /* ItemDetailsVC.swift */; };
+		EEC145201EF06BD300394A6A /* RoundedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC1451F1EF06BD300394A6A /* RoundedImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EE4E708F1EE77C9000B48CA0 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		EE86ADD61EE9F115006B993C /* ItemDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
+		EEC1451F1EF06BD300394A6A /* RoundedImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				EE4E708D1EE7789D00B48CA0 /* MaterialView.swift */,
+				EEC1451F1EF06BD300394A6A /* RoundedImages.swift */,
 				EE4E708F1EE77C9000B48CA0 /* ItemCell.swift */,
 				EE26DC0D1EE7460B0076EB04 /* CustomTextField.swift */,
 			);
@@ -213,6 +216,7 @@
 				EE4E70841EE74C1D00B48CA0 /* Item+CoreDataClass.swift in Sources */,
 				EE4E708E1EE7789D00B48CA0 /* MaterialView.swift in Sources */,
 				EE4E70901EE77C9000B48CA0 /* ItemCell.swift in Sources */,
+				EEC145201EF06BD300394A6A /* RoundedImages.swift in Sources */,
 				EE4E70861EE74C1D00B48CA0 /* Image+CoreDataClass.swift in Sources */,
 				EE26DC0E1EE7460B0076EB04 /* CustomTextField.swift in Sources */,
 				EE4E70881EE74C1D00B48CA0 /* Store+CoreDataClass.swift in Sources */,
