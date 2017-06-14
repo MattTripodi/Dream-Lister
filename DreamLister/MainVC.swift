@@ -103,16 +103,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 		let typeSort = NSSortDescriptor(key: "toItemType.type", ascending: true)
 		
 		if segment.selectedSegmentIndex == 0 {
-			
 			fetchRequest.sortDescriptors = [dateSort]
+			
 		} else if segment.selectedSegmentIndex == 1 {
-			
 			fetchRequest.sortDescriptors = [priceSort]
+			
 		} else if segment.selectedSegmentIndex == 2 {
-			
 			fetchRequest.sortDescriptors = [titleSort]
-		} else if segment.selectedSegmentIndex == 3 {
 			
+		} else if segment.selectedSegmentIndex == 3 {
 			fetchRequest.sortDescriptors = [typeSort]
 		}
 		
@@ -182,7 +181,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 				tableView.insertRows(at: [indexPath], with: .fade)
 			}
 			break
-			
 		}
 	}
 	

@@ -53,13 +53,15 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		if itemToEdit != nil {
 			loadItemData()
 		}
+		
+		itemTypes.sort {$0.type! < $1.type!} // Sort the PickerView in alphabetical order
 
     }
 	
 	func generateItemTypeData() {
 		
-		let type = ItemType(context: context)
-		type.type = "Electronics"
+		let type1 = ItemType(context: context)
+		type1.type = "Electronics"
 		let type2 = ItemType(context: context)
 		type2.type = "Appliances"
 		let type3 = ItemType(context: context)
@@ -233,7 +235,6 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 			item.details = details
 		}
 		
-		//item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
 		item.toItemType = itemTypes[storePicker.selectedRow(inComponent: 0)]
 		
 		ad.saveContext()
@@ -308,13 +309,6 @@ extension UIViewController
 	}
 }
 
-extension Double {
-	func withCommas() -> String {
-		let numberFormatter = NumberFormatter()
-		numberFormatter.numberStyle = NumberFormatter.Style.decimal
-		return numberFormatter.string(from: NSNumber(value:self))!
-	}
-}
 
 
 

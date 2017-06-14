@@ -19,8 +19,17 @@ class ItemCell: UITableViewCell {
 	func configureCell(item: Item) {
 		
 		title.text = item.title
-		price.text = "\(item.price)"
+		price.text = "$\(item.price.withCommas())"
 		details.text = item.details
 		thumb.image = item.toImage?.image as? UIImage
+		itemType.text = item.toItemType?.type
+	}
+}
+
+extension Double {
+	func withCommas() -> String {
+		let numberFormatter = NumberFormatter()
+		numberFormatter.numberStyle = NumberFormatter.Style.decimal
+		return numberFormatter.string(from: NSNumber(value:self))!
 	}
 }
