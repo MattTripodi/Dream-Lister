@@ -58,13 +58,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		
 		itemTypes.sort {$0.type! < $1.type!} // Sort the PickerView in alphabetical order
     }
-	
-	// To dismiss keyboard when return is pressed
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		self.view.endEditing(true)
-		return false
-	}
-	
+		
 	func generateItemTypeData() {
 		
 		let type1 = ItemType(context: context)
@@ -112,7 +106,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-				
+		
 		return itemTypes.count
 	}
 	
@@ -209,15 +203,35 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		}
 	}
 	
+	// Alert for when delete is pressed, just incase it was pressed on accident
+	func deleteAlert(title: String, message: String) {
+		
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		
+		alert.addAction(UIAlertAction(title: "NO", style: .default, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}))
+		
+		alert.addAction(UIAlertAction(title: "YES", style: .destructive, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+			
+			if self.itemToEdit != nil {
+				
+				context.delete(self.itemToEdit!)
+				ad.saveContext()
+			}
+			
+			self.navigationController?.popViewController(animated: true)
+		}))
+		
+		self.present(alert, animated: true, completion:  nil)
+	}
+	
 	@IBAction func deletePressed(_ sender: UIBarButtonItem) {
 		
-		if itemToEdit != nil {
-			
-			context.delete(itemToEdit!)
-			ad.saveContext()
-		}
+		deleteAlert(title: "Delete this item", message: "Are you sure?")
 		
-		navigationController?.popViewController(animated: true)
+		//navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func addImage(_ sender: UIButton) {
@@ -252,6 +266,12 @@ extension UIViewController
 	func dismissKeyboard()
 	{
 		view.endEditing(true)
+	}
+	
+	// To dismiss keyboard when return is pressed
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return false
 	}
 }
 
