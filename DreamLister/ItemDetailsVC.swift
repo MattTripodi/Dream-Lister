@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
 	@IBOutlet weak var storePicker: UIPickerView!
 	@IBOutlet weak var titleField: CustomTextField!
@@ -28,13 +28,16 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		selectStoreAndItemTypeLbl.layer.borderColor = UIColor.darkGray.cgColor // To give the label a border with rounded corners 
+		selectStoreAndItemTypeLbl.layer.borderColor = UIColor.darkGray.cgColor
 		selectStoreAndItemTypeLbl.layer.borderWidth = 1
-		selectStoreAndItemTypeLbl.layer.cornerRadius = 5
+		selectStoreAndItemTypeLbl.layer.cornerRadius = 5 // To give the label a border with rounded corners 
 		
 		saveItemBtn.layer.cornerRadius = 5 // To give the save button rounded corners 
 		
 		self.hideKeyboard()
+		self.titleField.delegate = self
+		self.PriceField.delegate = self
+		self.detailsField.delegate = self
 		
 		if let topItem = self.navigationController?.navigationBar.topItem {
 			
@@ -47,7 +50,6 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
 		
-		//getStores()
 		getItemTypes()
 		
 		if itemToEdit != nil {
@@ -55,8 +57,13 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		}
 		
 		itemTypes.sort {$0.type! < $1.type!} // Sort the PickerView in alphabetical order
-
     }
+	
+	// To dismiss keyboard when return is pressed
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return false
+	}
 	
 	func generateItemTypeData() {
 		
@@ -92,61 +99,20 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		type15.type = "Tools"
 		let type16 = ItemType(context: context)
 		type16.type = "Activities"
+		let type17 = ItemType(context: context)
+		type17.type = "Books"
 		
 		ad.saveContext()
 	}
-	
-	func generateStoreData() {
-		
-		let store = Store(context: context)
-		store.name = "Amazon"
-		let store1 = Store(context: context)
-		store1.name = "Apple"
-		let store2 = Store(context: context)
-		store2.name = "Walmart"
-		let store3 = Store(context: context)
-		store3.name = "Car Dealership"
-		let store4 = Store(context: context)
-		store4.name = "Electronics Store"
-		let store5 = Store(context: context)
-		store5.name = "Appliance Stores"
-		let store6 = Store(context: context)
-		store6.name = "Motorcyle Shop"
-		let store7 = Store(context: context)
-		store7.name = "Sporting Goods Store"
-		let store8 = Store(context: context)
-		store8.name = "Super Market"
-		
-		ad.saveContext()
-	}
-	
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		
-//		if component == 0 {
-//			let store = stores[row]
-//			return store.name
-//		} else if component == 1 {
-//			let itemType = itemTypes[row]
-//			return itemType.type
-//		} else {
-//			return "" //error
-//		}
 		
 		let itemType = itemTypes[row]
 		return itemType.type
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		
-//		if component == 0 {
-//			return stores.count
-//		} else if component == 1 {
-//			return itemTypes.count
-//		} else {
-//			return -1 //throw error
-//		}
-		
+				
 		return itemTypes.count
 	}
 	
@@ -171,27 +137,6 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 				
 				generateItemTypeData()
 				getItemTypes()
-				return
-			}
-			self.storePicker.reloadAllComponents()
-			
-		} catch {
-			
-			// handle the error
-		}
-	}
-	
-	func getStores() {
-		
-		let fetchRequest: NSFetchRequest<Store> = Store.fetchRequest()
-		
-		do {
-			
-			self.stores = try context.fetch(fetchRequest)
-			if self.stores.count == 0 {
-				
-				generateStoreData()
-				getStores()
 				return
 			}
 			self.storePicker.reloadAllComponents()
@@ -292,6 +237,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 	
 }
 
+// To dismiss the keyboard when outside of the keyboard is pressed
 extension UIViewController
 {
 	func hideKeyboard()
