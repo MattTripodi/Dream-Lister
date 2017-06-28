@@ -14,17 +14,36 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 	//IBOutlets
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var segment: UISegmentedControl!
+	@IBOutlet weak var totalCostLabel: UILabel!
 	
 	var controller: NSFetchedResultsController<Item>!
 	var itemToEdit: Item?
+	var items = [Item]()
+	var theItems = ItemCell()
 
+	// ViewDidLoad
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		totalCostLabel.layer.borderColor = UIColor.darkGray.cgColor
+		totalCostLabel.layer.borderWidth = 1
+		totalCostLabel.layer.cornerRadius = 5 // To give the label a border with rounded corners
 		
 		tableView.delegate = self
 		tableView.dataSource = self
 		
 		attemptFetch()
+	}
+	
+	// ViewDidAppear
+	override func viewDidAppear(_ animated: Bool) {
+		
+		updateTotalCost()
+	}
+	
+	func updateTotalCost() {
+		
+		
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,7 +104,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		return 170
+		return 162
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -185,6 +204,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 	}
 	
 }
+
+
 
 
 

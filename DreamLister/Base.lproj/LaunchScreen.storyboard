@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="318" id="7HF-yz-QF9"/>
                                     <constraint firstAttribute="height" constant="199" id="YR1-i5-2sj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="75"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>

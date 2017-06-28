@@ -95,6 +95,12 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		type16.type = "Activities"
 		let type17 = ItemType(context: context)
 		type17.type = "Books"
+		let type18 = ItemType(context: context)
+		type18.type = "Schooling"
+		let type19 = ItemType(context: context)
+		type19.type = "Children"
+		let type20 = ItemType(context: context)
+		type20.type = "Collectables"
 		
 		ad.saveContext()
 	}
@@ -208,11 +214,11 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 		
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
-		alert.addAction(UIAlertAction(title: "NO", style: .default, handler: { (action) in
+		alert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action) in
 			alert.dismiss(animated: true, completion: nil)
 		}))
 		
-		alert.addAction(UIAlertAction(title: "YES", style: .destructive, handler: { (action) in
+		alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
 			alert.dismiss(animated: true, completion: nil)
 			
 			if self.itemToEdit != nil {
